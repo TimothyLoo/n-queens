@@ -168,8 +168,6 @@
       // I - (number) Column Index in first row
       // O - boolean
 
-      // create nextColInd
-      // let nextColInd = majorDiagonalColumnIndexAtFirstRow + 1;
       //create count variable
       let column = majorDiagonalColumnIndexAtFirstRow;
       let count = 0; // this.get(0)[majorDiagonalColumnIndexAtFirstRow];
@@ -214,12 +212,48 @@
     //
     // test if a specific minor diagonal on this board contains a conflict
     hasMinorDiagonalConflictAt: function(minorDiagonalColumnIndexAtFirstRow) {
+      // I - (number) Column Index in first row
+      // O - boolean
+
+      // [0,0,0,0]
+      // [1,0,1,0]
+      // [0,0,0,0]
+      // [0,0,0,0]
+
+      //create count variable
+      let column = minorDiagonalColumnIndexAtFirstRow;
+      let count = 0;
+      // iterate through rows (1 below current row)
+      for (let i = 0; i < this.get('n'); i++) {
+        let row = this.get(i);
+        // if nextColInd
+        if (row[column]) {
+        // increment count
+          count++;
+        }
+        // if count > 1
+        if (count > 1) {
+          // return true
+          return true;
+        }
+        //decrement nextColInd
+        column--;
+      }
       return false; // fixme
     },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      return false; // fixme
+      //iterate through rows
+      for (let i = 0; i < (this.get('n') * 2); i++) {
+        //call hasMinorDiagonalConflictAt on current row
+        if (this.hasMinorDiagonalConflictAt(i)) {
+          //return true
+          return true;
+        }
+      }
+      //otherwise
+      return false;
     }
 
     /*--------------------  End of Helper Functions  ---------------------*/
