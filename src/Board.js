@@ -99,14 +99,10 @@
       // I -
       // O - boolean
 
-      // _.each(this.rows(), (row) => rows.hasRowConflictAt(row));
       // Iterate through each row of board
       for (let i = 0; i < this.get('n'); i++) {
-        // Call hasRowConflictAt, if true
-        if (this.hasRowConflictAt(i)) {
-          // return true
-          return true;
-        }
+        // Call hasRowConflictAt is true, return true
+        if (this.hasRowConflictAt(i)) { return true; }
       }
       // return false
       return false;
@@ -127,16 +123,10 @@
       // Iterate through each row
       for (let i = 0; i < this.get('n'); i++) {
         let row = this.get(i);
-        // if index at colInd is 1
-        if (row[colIndex]) {
-          // increment count
-          count++;
-        }
-        // if count > 1
-        if (count > 1) {
-          // return true
-          return true;
-        }
+        // if index at colInd is 1, increment count
+        if (row[colIndex]) { count++; }
+        // if count > 1, return true
+        if (count > 1) { return true; }
       }
 
       // return false
@@ -147,11 +137,8 @@
     hasAnyColConflicts: function() {
       // Iterate through rows
       for (let i = 0; i < this.get('n'); i++) {
-        // call hasCOlConflictAt
-        if (this.hasColConflictAt(i)) {
-          // if true
-          return true;
-        }
+        // call hasCOlConflictAt, return true
+        if (this.hasColConflictAt(i)) { return true; }
       }
       //otherwise return false
       return false;
@@ -167,22 +154,15 @@
       // I - (number) Column Index in first row
       // O - boolean
 
-      //create count variable
       let column = majorDiagonalColumnIndexAtFirstRow;
-      let count = 0; // this.get(0)[majorDiagonalColumnIndexAtFirstRow];
+      let count = 0; //create count variable
       // iterate through rows (1 below current row)
       for (let i = 0; i < this.get('n'); i++) {
         let row = this.get(i);
-        // if nextColInd
-        if (row[column]) {
-        // increment count
-          count++;
-        }
-        // if count > 1
-        if (count > 1) {
-          // return true
-          return true;
-        }
+        // if nextColInd, increment count
+        if (row[column]) { count++; }
+        // if count > 1, return true
+        if (count > 1) { return true; }
         //increment nextColInd
         column += 1;
       }
@@ -194,11 +174,8 @@
     hasAnyMajorDiagonalConflicts: function() {
       //iterate through rows
       for (let i = 1 - this.get('n'); i < this.get('n'); i++) {
-      //call hasMajorDiagonalConflictAt on current row
-        if (this.hasMajorDiagonalConflictAt(i)) {
-          //return true
-          return true;
-        }
+      // call hasMajorDiagonalConflictAt on current row, return true
+        if (this.hasMajorDiagonalConflictAt(i)) { return true; }
       }
       //otherwise
       return false;
@@ -225,16 +202,10 @@
       // iterate through rows (1 below current row)
       for (let i = 0; i < this.get('n'); i++) {
         let row = this.get(i);
-        // if nextColInd
-        if (row[column]) {
-        // increment count
-          count++;
-        }
-        // if count > 1
-        if (count > 1) {
-          // return true
-          return true;
-        }
+        // if nextColInd, increment count
+        if (row[column]) { count++; }
+        // if count > 1, return true
+        if (count > 1) { return true; }
         //decrement nextColInd
         column--;
       }
@@ -245,11 +216,8 @@
     hasAnyMinorDiagonalConflicts: function() {
       //iterate through rows
       for (let i = 0; i < (this.get('n') * 2); i++) {
-        //call hasMinorDiagonalConflictAt on current row
-        if (this.hasMinorDiagonalConflictAt(i)) {
-          //return true
-          return true;
-        }
+        //call hasMinorDiagonalConflictAt on current row, return true
+        if (this.hasMinorDiagonalConflictAt(i)) { return true; }
       }
       //otherwise
       return false;
